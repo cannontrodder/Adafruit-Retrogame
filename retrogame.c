@@ -83,6 +83,7 @@ POSSIBILITY OF SUCH DAMAGE.
 // create a spare ground point.
 
 #define GND -1
+#define USE_INTERNAL_PU 0
 struct {
 	int pin;
 	int key;
@@ -310,6 +311,8 @@ int main(int argc, char *argv[]) {
 	// the pull-ups.  Based on GPIO example code by Dom and Gert van
 	// Loo on elinux.org
 
+	#if USE_INTERNAL_PU
+
 	if((fd = open("/dev/mem", O_RDWR | O_SYNC)) < 0)
 		err("Can't open /dev/mem");
 	gpio = mmap(            // Memory-mapped I/O
@@ -335,6 +338,7 @@ int main(int argc, char *argv[]) {
 	gpio[GPPUDCLK0] = 0;
 	(void)munmap((void *)gpio, BLOCK_SIZE); // Done with GPIO mmap()
 
+	#endif
 
 	// ----------------------------------------------------------------
 	// All other GPIO config is handled through the sysfs interface.
