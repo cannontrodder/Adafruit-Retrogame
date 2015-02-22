@@ -314,6 +314,8 @@ int main(int argc, char *argv[]) {
 
 	#if USE_INTERNAL_PU
 
+	printf("Using internal pullups\n");
+
 	if((fd = open("/dev/mem", O_RDWR | O_SYNC)) < 0)
 		err("Can't open /dev/mem");
 	gpio = mmap(            // Memory-mapped I/O
@@ -338,7 +340,8 @@ int main(int argc, char *argv[]) {
 	gpio[GPPUD]     = 0;                    // Reset pullup registers
 	gpio[GPPUDCLK0] = 0;
 	(void)munmap((void *)gpio, BLOCK_SIZE); // Done with GPIO mmap()
-
+	#else
+		printf("Not using internal pullups\n");
 	#endif
 
 	// ----------------------------------------------------------------
@@ -447,8 +450,13 @@ int main(int argc, char *argv[]) {
 					// must wait for debounce!
 					lseek(p[i].fd, 0, SEEK_SET);
 					read(p[i].fd, &c, 1);
+#if USE_INTERNAL_PU
 					if(c == '0')      intstate[i] = 1;
 					else if(c == '1') intstate[i] = 0;
+#else
+					if(c == '0')      intstate[i] = 0;
+					else if(c == '1') intstate[i] = 1;
+#endif
 					p[i].revents = 0; // Clear flag
 				}
 			}
