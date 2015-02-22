@@ -114,15 +114,15 @@ struct {
 	// (using HDMI or composite instead), as with our original
 	// retro gaming guide.
 	// Input   Output (from /usr/include/linux/input.h)
-	{   3,     KEY_Z     },   // Joystick (4 pins)
+	{   22,     KEY_Z     },   // Joystick (4 pins)
 	{   4,     KEY_X    },
 	{   27,     KEY_M     },
 	{  17,     KEY_K       },
-	{  2,     KEY_L        },   // A/Fire/jump/primary
-	{  22,     KEY_SEMICOLON        },   // B/Bomb/secondary
-	{  10,     KEY_R        },   // Credit
-	{  9,     KEY_Q        },   // Start 1P
-	{  -1,     -1           } }, // END OF LIST, DO NOT CHANGE
+	{  10,     KEY_L        },   // A/Fire/jump/primary
+//	{  22,     KEY_SEMICOLON        },   // B/Bomb/secondary
+//	{  10,     KEY_R        },   // Credit
+//	{  9,     KEY_Q        },   // Start 1P
+	{  -1,     -1           } }; // END OF LIST, DO NOT CHANGE
 
 // A "Vulcan nerve pinch" (holding down a specific button combination
 // for a few seconds) issues an 'esc' keypress to MAME (which brings up
@@ -135,7 +135,7 @@ struct {
 // Also key auto-repeat times are set here.  This is for navigating the
 // game menu using the 'gamera' utility; MAME disregards key repeat
 // events (as it should).
-const unsigned long vulcanMask = (1L << 6) | (1L << 7);
+const unsigned long vulcanMask = (1L << 3) | (1L << 4);
 const int           vulcanKey  = KEY_ESC, // Keycode to send
                     vulcanTime = 1500,    // Pinch time in milliseconds
                     repTime1   = 500,     // Key hold time to begin repeat
