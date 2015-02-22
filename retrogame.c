@@ -92,14 +92,14 @@ struct {
 	// This pin/key table is used if an Adafruit PiTFT display
 	// is detected (e.g. Cupcade or PiGRRL).
 	// Input   Output (from /usr/include/linux/input.h)
-	{   2,     KEY_LEFT     },   // Joystick (4 pins)
-	{   3,     KEY_RIGHT    },
-	{   4,     KEY_DOWN     },
-	{  17,     KEY_UP       },
-	{  27,     KEY_Z        },   // A/Fire/jump/primary
-	{  22,     KEY_X        },   // B/Bomb/secondary
-	{  23,     KEY_R        },   // Credit
-	{  18,     KEY_Q        },   // Start 1P
+	{   3,     KEY_Z     },   // Joystick (4 pins)
+	{   4,     KEY_X    },
+	{   27,     KEY_M     },
+	{  17,     KEY_K       },
+	{  2,     KEY_L        },   // A/Fire/jump/primary
+	{  22,     KEY_SEMICOLON        },   // B/Bomb/secondary
+	{  10,     KEY_R        },   // Credit
+	{  9,     KEY_Q        },   // Start 1P
 	{  -1,     -1           } }, // END OF LIST, DO NOT CHANGE
 	// MAME must be configured with 'z' & 'x' as buttons 1 & 2 -
 	// this was required for the accompanying 'menu' utility to
@@ -114,14 +114,15 @@ struct {
 	// (using HDMI or composite instead), as with our original
 	// retro gaming guide.
 	// Input   Output (from /usr/include/linux/input.h)
-	{  25,     KEY_LEFT     },   // Joystick (4 pins)
-	{   9,     KEY_RIGHT    },
-	{  10,     KEY_UP       },
-	{  17,     KEY_DOWN     },
-	{  23,     KEY_LEFTCTRL },   // A/Fire/jump/primary
-	{   7,     KEY_LEFTALT  },   // B/Bomb/secondary
-	// For credit/start/etc., use USB keyboard or add more buttons.
-	{  -1,     -1           } }; // END OF LIST, DO NOT CHANGE
+	{   3,     KEY_Z     },   // Joystick (4 pins)
+	{   4,     KEY_X    },
+	{   27,     KEY_M     },
+	{  17,     KEY_K       },
+	{  2,     KEY_L        },   // A/Fire/jump/primary
+	{  22,     KEY_SEMICOLON        },   // B/Bomb/secondary
+	{  10,     KEY_R        },   // Credit
+	{  9,     KEY_Q        },   // Start 1P
+	{  -1,     -1           } }, // END OF LIST, DO NOT CHANGE
 
 // A "Vulcan nerve pinch" (holding down a specific button combination
 // for a few seconds) issues an 'esc' keypress to MAME (which brings up
